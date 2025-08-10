@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Water gradient -->
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0077BE;stop-opacity:1">
+        <animate attributeName="stop-color" values="#0077BE;#0096C7;#00B4D8;#0077BE" dur="4s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" style="stop-color:#0096C7;stop-opacity:1">
+        <animate attributeName="stop-color" values="#0096C7;#00B4D8;#48CAE4;#0096C7" dur="4s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" style="stop-color:#48CAE4;stop-opacity:1">
+        <animate attributeName="stop-color" values="#48CAE4;#90E0EF;#ADE8F4;#48CAE4" dur="4s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+    
+    <!-- River flow pattern -->
+    <pattern id="riverFlow" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0,20 Q10,10 20,20 T40,20" stroke="#90E0EF" stroke-width="2" fill="none" opacity="0.5">
+        <animate attributeName="d" 
+          values="M0,20 Q10,10 20,20 T40,20;
+                  M0,20 Q10,30 20,20 T40,20;
+                  M0,20 Q10,10 20,20 T40,20" 
+          dur="2s" 
+          repeatCount="indefinite" />
+      </path>
+    </pattern>
+    
+    <!-- Ripple effect -->
+    <radialGradient id="rippleGradient">
+      <stop offset="0%" style="stop-color:#0077BE;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#CAF0F8;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background circle with ripple animation -->
+  <circle cx="100" cy="100" r="90" fill="url(#rippleGradient)" opacity="0.3">
+    <animate attributeName="r" values="50;90;50" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.6;0.1;0.6" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- R character -->
+  <g id="r-letter">
+    <path d="M 40 60 L 40 140 M 40 60 L 70 60 Q 90 60 90 80 Q 90 100 70 100 L 40 100 M 60 100 L 85 140" 
+          stroke="url(#waterGradient)" 
+          stroke-width="8" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round">
+      <animate attributeName="stroke-width" values="8;10;8" dur="2s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- 3 character with river flow -->
+  <g id="three-number">
+    <path d="M 110 60 L 150 60 Q 170 60 170 80 Q 170 90 160 95 Q 170 100 170 110 Q 170 130 150 130 L 110 130" 
+          stroke="url(#waterGradient)" 
+          stroke-width="8" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round">
+      <animate attributeName="stroke-width" values="8;10;8" dur="2s" begin="0.5s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Three rivers flowing from center -->
+  <g id="rivers" opacity="0.6">
+    <!-- River 1 - Yangtze -->
+    <path d="M 100 100 Q 120 120 140 150" stroke="#0077BE" stroke-width="3" fill="none">
+      <animate attributeName="d" 
+        values="M 100 100 Q 120 120 140 150;
+                M 100 100 Q 125 115 140 150;
+                M 100 100 Q 120 120 140 150" 
+        dur="3s" 
+        repeatCount="indefinite" />
+    </path>
+    
+    <!-- River 2 - Yellow River -->
+    <path d="M 100 100 Q 100 120 100 150" stroke="#0096C7" stroke-width="3" fill="none">
+      <animate attributeName="d" 
+        values="M 100 100 Q 100 120 100 150;
+                M 100 100 Q 95 120 100 150;
+                M 100 100 Q 100 120 100 150" 
+        dur="3s" 
+        begin="1s"
+        repeatCount="indefinite" />
+    </path>
+    
+    <!-- River 3 - Lancang -->
+    <path d="M 100 100 Q 80 120 60 150" stroke="#00B4D8" stroke-width="3" fill="none">
+      <animate attributeName="d" 
+        values="M 100 100 Q 80 120 60 150;
+                M 100 100 Q 75 115 60 150;
+                M 100 100 Q 80 120 60 150" 
+        dur="3s" 
+        begin="2s"
+        repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Center source point -->
+  <circle cx="100" cy="100" r="5" fill="#0077BE">
+    <animate attributeName="r" values="5;7;5" dur="1.5s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Water particles -->
+  <g id="particles">
+    <circle cx="50" cy="50" r="2" fill="#90E0EF">
+      <animateTransform attributeName="transform" type="translate" 
+        values="0 0; 100 100; 0 0" 
+        dur="10s" 
+        repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;1;0" dur="10s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="150" cy="50" r="2" fill="#ADE8F4">
+      <animateTransform attributeName="transform" type="translate" 
+        values="0 0; -100 100; 0 0" 
+        dur="8s" 
+        repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;1;0" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="100" cy="30" r="2" fill="#48CAE4">
+      <animateTransform attributeName="transform" type="translate" 
+        values="0 0; 0 140; 0 0" 
+        dur="6s" 
+        repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;1;0" dur="6s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Text label -->
+  <text x="100" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#0077BE">
+    River 3 · 三江源
+  </text>
+</svg>

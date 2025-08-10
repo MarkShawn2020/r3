@@ -26,7 +26,10 @@ program
   .option('--skip-git', 'Skip git initialization')
   .option('-v, --verbose', 'Verbose output')
   .action(async (projectName: string | undefined, options: any) => {
-    logger.river();
+    if (process.env.NO_ANIMATION !== 'true') {
+      await logger.animateLogo('rivers', 1500);
+    }
+    logger.dynamicBanner('create');
     
     const answers = await promptProjectDetails(options, projectName);
     
@@ -64,7 +67,7 @@ program
   .command('init')
   .description('Initialize R3 in an existing project')
   .action(async () => {
-    logger.river();
+    logger.dynamicBanner('init');
     logger.info('Initializing R3 in current directory...');
     
     await inquirer.prompt([
@@ -97,8 +100,11 @@ program
   .command('list-templates')
   .alias('ls')
   .description('List available project templates')
-  .action(() => {
-    logger.river();
+  .action(async () => {
+    if (process.env.NO_ANIMATION !== 'true') {
+      await logger.animateLogo('particles', 1000);
+    }
+    logger.compactBanner();
     logger.info('Available project templates:');
     Object.values(ProjectType).forEach(type => {
       logger.info(`  • ${type}`);

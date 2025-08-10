@@ -24,12 +24,13 @@
     "templates"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && chmod +x dist/cli/index.js",
     "dev": "tsx watch src/cli/index.ts",
     "start": "node dist/cli/index.js",
+    "demo": "tsx src/demo-logo.ts",
     "clean": "rm -rf dist",
     "prebuild": "npm run clean",
-    "prepare": "npm run build",
+    "postinstall": "npm run build",
     "test": "vitest",
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write \"src/**/*.{ts,tsx,json,md}\""
