@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import ora, { Ora } from 'ora';
 import { AsciiArt } from './ascii-art';
 import { AnimatedLogo } from './animated-logo';
+import { NonBlockingAnimation } from './non-blocking-animation';
 
 class Logger {
   private spinner: Ora | null = null;
@@ -106,6 +107,18 @@ class Logger {
 
   compactBanner(): void {
     console.log(AsciiArt.getCompactBanner());
+  }
+
+  quickSplash(command?: string): void {
+    NonBlockingAnimation.quickSplash(command);
+  }
+
+  parallelDisplay(type: 'compact' | 'full' | 'dynamic', content: () => void | Promise<void>): void {
+    NonBlockingAnimation.parallelDisplay(type, content);
+  }
+
+  startNonBlockingAnimation(type: 'water' | 'fluid' | 'ripple' | 'rivers' | 'particles' = 'fluid'): void {
+    NonBlockingAnimation.startHeaderAnimation(type);
   }
 }
 
