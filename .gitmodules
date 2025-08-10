@@ -1,0 +1,3 @@
+[submodule "r3-dashboard"]
+	path = r3-dashboard
+	url = git@github.com:markshawn2020/my-web-boilerplate.git
