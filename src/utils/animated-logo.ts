@@ -15,29 +15,29 @@ export class AnimatedLogo {
     '～～～≈≈≈～～～≈≈≈～～～'
   ];
 
-  // R3 logo with animated waves
+  // R3 logo with animated waves - smoother transitions
   private static readonly R3_WAVE_FRAMES = [
     `
-    ╭━━━╮ ╭━━━╮
-    ┃╭━╮┃ ╰━━╮┃
-    ┃╰━╯┃ ╭━━╯┃
-    ┃╭╮╭╯ ╰━━╮┃
-    ┃┃┃╰╮ ╭━━╯┃
-    ╰╯╰━╯ ╰━━━╯`,
+    ██████╗ ██████╗ 
+    ██╔══██╗╚════██╗
+    ██████╔╝ █████╔╝
+    ██╔══██╗ ╚═══██╗
+    ██║  ██║██████╔╝
+    ╚═╝  ╚═╝╚═════╝`,
     `
-    ╭───╮ ╭───╮
-    │╭─╮│ ╰──╮│
-    │╰─╯│ ╭──╯│
-    │╭╮╭╯ ╰──╮│
-    │││╰╮ ╭──╯│
-    ╰╯╰─╯ ╰───╯`,
+    ██████╗ ██████╗ 
+    ██╔══██╗ ╚═══██╗
+    ██████╔╝ █████╔╝
+    ██╔══██╗╚════██╗
+    ██║  ██║██████╔╝
+    ╚═╝  ╚═╝╚═════╝`,
     `
-    ┏━━━┓ ┏━━━┓
-    ┃┏━┓┃ ┗━━┓┃
-    ┃┗━┛┃ ┏━━┛┃
-    ┃┏┓┏┛ ┗━━┓┃
-    ┃┃┃┗┓ ┏━━┛┃
-    ┗┛┗━┛ ┗━━━┛`
+    ██████╗  ██████╗
+    ██╔══██╗ ╚════██╗
+    ██████╔╝  ████╔╝
+    ██╔══██╗ ╚═══██╗
+    ██║  ██║ ██████╔╝
+    ╚═╝  ╚═╝ ╚═════╝`
   ];
 
   // Fluid R3 with morphing effect
@@ -219,8 +219,8 @@ export class AnimatedLogo {
 
   static async animateLogo(
     type: 'water' | 'fluid' | 'ripple' | 'rivers' | 'particles' = 'fluid',
-    duration: number = 3000,
-    fps: number = 10
+    duration: number = 1500,
+    fps: number = 15
   ): Promise<void> {
     const startTime = performance.now();
     const interval = 1000 / fps;

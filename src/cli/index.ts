@@ -27,7 +27,7 @@ program
   .option('-v, --verbose', 'Verbose output')
   .action(async (projectName: string | undefined, options: any) => {
     if (process.env.NO_ANIMATION !== 'true') {
-      await logger.animateLogo('rivers', 1500);
+      await logger.animateLogo('fluid', 1500);
     }
     logger.dynamicBanner('create');
     
@@ -67,6 +67,9 @@ program
   .command('init')
   .description('Initialize R3 in an existing project')
   .action(async () => {
+    if (process.env.NO_ANIMATION !== 'true') {
+      await logger.animateLogo('fluid', 1500);
+    }
     logger.dynamicBanner('init');
     logger.info('Initializing R3 in current directory...');
     
@@ -102,7 +105,7 @@ program
   .description('List available project templates')
   .action(async () => {
     if (process.env.NO_ANIMATION !== 'true') {
-      await logger.animateLogo('particles', 1000);
+      await logger.animateLogo('fluid', 1500);
     }
     logger.compactBanner();
     logger.info('Available project templates:');
@@ -237,5 +240,24 @@ function getFeatureChoices(projectType: ProjectType) {
       return commonFeatures;
   }
 }
+
+// Add default action when no command is provided
+program
+  .action(async () => {
+    if (process.env.NO_ANIMATION !== 'true') {
+      await logger.animateLogo('fluid', 2000);
+    }
+    logger.river();
+    logger.info('Welcome to R3 (River 3) - 三江源');
+    logger.info('');
+    logger.info('Usage: r3 <command> [options]');
+    logger.info('');
+    logger.info('Commands:');
+    logger.info('  create [name]  Create a new R3 project');
+    logger.info('  init           Initialize R3 in existing project');
+    logger.info('  list-templates List available templates');
+    logger.info('');
+    logger.info('Run r3 <command> --help for detailed options');
+  });
 
 program.parse(process.argv);
